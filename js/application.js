@@ -23,8 +23,14 @@
 	Highcharts.setOptions({colors: ['#ED561B', '#058DC7']});
 
 	var Wejet = function() {
-		// private self reference for convenient reference to this object from nested objects
+
+		/*
+			CONFIGURATION
+		*/
+
 		var mode = 'prod', // dev or prod
+
+			// private self reference for convenient reference to this object from nested objects
 			self = this,
 
 			// convenient way to connect api uri, results obj (ref), dom element id (also ref), and formatter (callback)
@@ -61,6 +67,7 @@
 				}
 			}],
 
+			// config for the chart according to highcharts.com api
 			_chart_settings ={
 				chart: {
 					renderTo: 'forecast-chart',
@@ -106,6 +113,10 @@
 				}]
 			};
 
+		/*
+			"HELPER" METHODS
+		*/
+
 		this.error = function(msg) {
 			var $el = $('#flash');
 
@@ -148,6 +159,10 @@
 				return $.ajax(settings).promise();
 			}
 		};
+
+		/*
+			THE GOOD STUFF
+		*/
 
 		this.locate = function(callback) {
 			var geo = navigator.geolocation;
