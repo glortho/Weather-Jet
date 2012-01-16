@@ -24,7 +24,8 @@
 
 	var Wejet = function() {
 		// private self reference for convenient reference to this object from nested objects
-		var self = this,
+		var mode = 'dev', // dev or prod
+			self = this,
 
 			// convenient way to connect api uri, results obj (ref), dom element id (also ref), and formatter (callback)
 			_api_sets = [{
@@ -185,6 +186,46 @@
 			$('text > tspan[x=340]').hide(); // hiding highcarts.com url (not a nice thing to do, but need to for now)
 		};
 
+		this.fetch = {
+			local: function() {
+				var set, nugget;
+
+				$.getJSON('./data.json', function(data) {
+					for (var i = _api_sets.length - 1; i >= 0; i--) {
+						set = _api_sets[i];
+						nugget = data[set.ref];
+						docready.then(function() {
+							document.getElementById(set.ref).innerHTML = set.callback.call(self, nugget);
+						});
+					}
+				});
+			},
+			remote: function() {
+				var options = {
+					url: $.map(_api_sets, function(item) {
+						return item.url;
+					}).join('/')
+				};
+		
+				self.xhr
+					.send(options)
+					.done(function(data) {
+						var set, nugget;
+						if ( data.response.error ) {
+							self.error(data.response.error.description);
+						} else {
+							for (var i = _api_sets.length - 1; i >= 0; i--) {
+								set = _api_sets[i];
+								nugget = data[set.ref];
+								docready.then(function() {
+									document.getElementById(set.ref).innerHTML = set.callback.call(self, nugget);
+								});
+							}
+						}
+					});
+			}
+		};
+
 		this.search = {
 			autocomplete: function() {
 				var cache = {},
@@ -248,42 +289,12 @@
 		};
 
 		this.update = function() {
-			// options should be { url: String, ref: String, callback: Function }
-
-			var that = this, options;
-			// local testing
-			$.getJSON('./data.json', function(data) {
-				for (var i = _api_sets.length - 1; i >= 0; i--) {
-					set = _api_sets[i];
-					nugget = data[set.ref];
-					docready.then(function() {
-						document.getElementById(set.ref).innerHTML = set.callback.call(that, nugget);
-					});
-				}
-			});
-
-			// options = {
-			// 	url: $.map(_api_sets, function(item) {
-			// 		return item.url;
-			// 	}).join('/')
-			// };
-	
-			// this.xhr
-			// 	.send(options)
-			// 	.done(function(data) {
-			// 		var set, nugget;
-			// 		if ( data.response.error ) {
-			// 			self.error(data.response.error.description);
-			// 		} else {
-			// 			for (var i = _api_sets.length - 1; i >= 0; i--) {
-			// 				set = _api_sets[i];
-			// 				nugget = data[set.ref];
-			// 				docready.then(function() {
-			// 					document.getElementById(set.ref).innerHTML = set.callback.call(that, nugget);
-			// 				});
-			// 			}
-			// 		}
-			// 	});
+			if ( mode == 'dev') {
+				// local testing
+				this.fetch.local();
+			} else {
+				this.fetch.remote();
+			}
 		};
 
 		this.preload = function() {
