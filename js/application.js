@@ -20,7 +20,9 @@
 	// custom doc ready for json callbacks, allows us finer-grained control over just these functions
 	var docready = new $.Deferred();
 
+	// colors more appropriate for highs and lows
 	Highcharts.setOptions({colors: ['#ED561B', '#058DC7']});
+
 
 	var Wejet = function() {
 
@@ -216,7 +218,7 @@
 				});
 			},
 			remote: function() {
-				var deferred = new $.Deferred(),
+				var deferred = new $.Deferred(), // for error checking
 					options = {
 						url: $.map(_api_sets, function(item) {
 							return item.url;
@@ -231,6 +233,8 @@
 						if ( !data || data.response.error ) {
 							msg = data ? data.response.error : 'Unknown error.';
 							self.error(msg);
+						} else if (!data[_api_sets[0].ref]) {
+							self.error('Please select from the pop-up list.');
 						} else {
 							for (var i = _api_sets.length - 1; i >= 0; i--) {
 								set = _api_sets[i];
