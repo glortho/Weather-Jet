@@ -24,7 +24,7 @@
 
 	var Wejet = function() {
 		// private self reference for convenient reference to this object from nested objects
-		var mode = 'dev', // dev or prod
+		var mode = 'prod', // dev or prod
 			self = this,
 
 			// convenient way to connect api uri, results obj (ref), dom element id (also ref), and formatter (callback)
@@ -253,6 +253,7 @@
 					select: function(e, ui) {
 						this.value = ui.item.value.replace('/q/', '');
 						that.submit();
+						this.blur();
 						return false;
 					}
 				});
