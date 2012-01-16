@@ -66,6 +66,7 @@ header {
   color: white;
   border: white 2pt solid;
   padding: 5px;
+  max-width: 340px;
   @include border-radius();
 }
 

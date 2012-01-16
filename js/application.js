@@ -201,18 +201,21 @@
 				});
 			},
 			remote: function() {
-				var options = {
-					url: $.map(_api_sets, function(item) {
-						return item.url;
-					}).join('/')
-				};
+				var deferred = new $.Deferred(),
+					options = {
+						url: $.map(_api_sets, function(item) {
+							return item.url;
+						}).join('/')
+					};
 		
 				self.xhr
 					.send(options)
 					.done(function(data) {
-						var set, nugget;
-						if ( data.response.error ) {
-							self.error(data.response.error.description);
+						var set, nugget, msg;
+						deferred.resolve();
+						if ( !data || data.response.error ) {
+							msg = data ? data.response.error : 'Unknown error.';
+							self.error(msg);
 						} else {
 							for (var i = _api_sets.length - 1; i >= 0; i--) {
 								set = _api_sets[i];
@@ -223,6 +226,15 @@
 							}
 						}
 					});
+
+				// Note: No fail function/error checking because JSONP doesn't trigger error callbacks, so have to do something like this.
+				window.setTimeout( function() {
+					if ( deferred.state() == 'pending' ) {
+						self.error('Request failed. Please pick a different location or try again later.');
+						deferred.reject();
+						self.xhr.loading.hide();
+					}
+				}, 3000);
 			}
 		};
 
