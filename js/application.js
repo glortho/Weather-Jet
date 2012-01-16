@@ -227,16 +227,6 @@
 			},
 			bind: function() {
 				$('form').on('submit', this.submit);
-
-				// $('#search').on('keyup', function(e) {
-				// 	switch( e.keyCode ) {
-				// 		case 13:
-				// 		case 91:
-				// 			break;
-				// 		default:
-				// 			that.autocomplete(this.value);
-				// 	}
-				// });
 			},
 			submit: function() {
 				var el = document.getElementById('search'),
