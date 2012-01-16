@@ -1,0 +1,122 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes rotate {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+
+body {
+	font-family: Verdana;
+	font-size: 10pt;
+}
+
+header {
+	height: 13px;
+}
+
+#wejet {
+	width: 370px;
+	height: 306px;
+	margin: 40px;
+	padding: 10px 10px 20px 10px;
+	@include box-shadow();
+	@include border-radius();
+	@include linear-gradient( color-stops( rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5) ), left top );
+}
+
+#current_observation {
+	margin-top: 5px;
+	height: 43px;
+	div {
+		padding: 15px;
+		font-weight: bold
+	}
+	img.loading {
+		-webkit-animation-name: rotate; 
+		-webkit-animation-duration: 0.5s; 
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+		-moz-animation-name: rotate;
+		-moz-animation-duration: 0.5s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-timing-function: linear;
+		animation-name: rotate;
+		animation-duration: 0.5s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+}
+
+#flash {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  background: #ff6666;
+  color: white;
+  border: white 2pt solid;
+  padding: 5px;
+  @include border-radius();
+}
+
+#forecast-wrapper {
+	width: 352px;
+	height: 232px;
+	margin: 10px 4px 10px 4px;
+	background-color: white;
+	border: #ccc solid 1px;
+	padding: 4px;
+	@include border-radius();
+	@include box-shadow(inset 0px 0px 2px #ccc);
+}
+
+#forecast {
+	background-color: white;
+	width: 350px;
+	@include border-bottom-radius();
+
+	span {
+		position: relative;
+		bottom: 7px;
+
+		@for $i from 1 through 5 {
+			&:nth-child(#{$i}) { left: 42px+($i*25px) }
+		}
+	}
+
+	img {
+		width: 32px;
+		height: 32px;
+	}
+
+}
+
+#forecast-chart {
+  width: 350px;
+  height: 200px;
+}
+
+#search {
+	width: 120px;
+}
+
+#search-form {
+  float: right;
+}
+
+// overwriting jQuery UI
+
+.ui-widget {
+	font-family: Verdana;
+	font-size: 9pt;
+}

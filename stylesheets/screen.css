@@ -1,0 +1,260 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../.rvm/gems/ruby-1.9.2-p290@global/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+@-webkit-keyframes rotate {
+  /* line 10, ../sass/screen.scss */
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  /* line 11, ../sass/screen.scss */
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotate {
+  /* line 15, ../sass/screen.scss */
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  /* line 16, ../sass/screen.scss */
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+/* line 19, ../sass/screen.scss */
+body {
+  font-family: Verdana;
+  font-size: 10pt;
+}
+
+/* line 24, ../sass/screen.scss */
+header {
+  height: 13px;
+}
+
+/* line 28, ../sass/screen.scss */
+#wejet {
+  width: 370px;
+  height: 306px;
+  margin: 40px;
+  padding: 10px 10px 20px 10px;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, rgba(210, 237, 250, 0.5)), color-stop(100%, rgba(76, 183, 237, 0.5)));
+  background-image: -webkit-linear-gradient(left top, rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5));
+  background-image: -moz-linear-gradient(left top, rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5));
+  background-image: -o-linear-gradient(left top, rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5));
+  background-image: -ms-linear-gradient(left top, rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5));
+  background-image: linear-gradient(left top, rgba(210, 237, 250, 0.5), rgba(76, 183, 237, 0.5));
+}
+
+/* line 38, ../sass/screen.scss */
+#current_observation {
+  margin-top: 5px;
+  height: 43px;
+}
+/* line 41, ../sass/screen.scss */
+#current_observation div {
+  padding: 15px;
+  font-weight: bold;
+}
+/* line 45, ../sass/screen.scss */
+#current_observation img.loading {
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: rotate;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  animation-name: rotate;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* line 61, ../sass/screen.scss */
+#flash {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  background: #ff6666;
+  color: white;
+  border: white 2pt solid;
+  padding: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 72, ../sass/screen.scss */
+#forecast-wrapper {
+  width: 352px;
+  height: 232px;
+  margin: 10px 4px 10px 4px;
+  background-color: white;
+  border: #ccc solid 1px;
+  padding: 4px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0px 0px 2px #cccccc;
+  -webkit-box-shadow: inset 0px 0px 2px #cccccc;
+  -o-box-shadow: inset 0px 0px 2px #cccccc;
+  box-shadow: inset 0px 0px 2px #cccccc;
+}
+
+/* line 83, ../sass/screen.scss */
+#forecast {
+  background-color: white;
+  width: 350px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -o-border-bottom-left-radius: 5px;
+  -ms-border-bottom-left-radius: 5px;
+  -khtml-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -o-border-bottom-right-radius: 5px;
+  -ms-border-bottom-right-radius: 5px;
+  -khtml-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* line 88, ../sass/screen.scss */
+#forecast span {
+  position: relative;
+  bottom: 7px;
+}
+/* line 93, ../sass/screen.scss */
+#forecast span:nth-child(1) {
+  left: 67px;
+}
+/* line 93, ../sass/screen.scss */
+#forecast span:nth-child(2) {
+  left: 92px;
+}
+/* line 93, ../sass/screen.scss */
+#forecast span:nth-child(3) {
+  left: 117px;
+}
+/* line 93, ../sass/screen.scss */
+#forecast span:nth-child(4) {
+  left: 142px;
+}
+/* line 93, ../sass/screen.scss */
+#forecast span:nth-child(5) {
+  left: 167px;
+}
+/* line 97, ../sass/screen.scss */
+#forecast img {
+  width: 32px;
+  height: 32px;
+}
+
+/* line 104, ../sass/screen.scss */
+#forecast-chart {
+  width: 350px;
+  height: 200px;
+}
+
+/* line 109, ../sass/screen.scss */
+#search {
+  width: 120px;
+}
+
+/* line 113, ../sass/screen.scss */
+#search-form {
+  float: right;
+}
+
+/* line 119, ../sass/screen.scss */
+.ui-widget {
+  font-family: Verdana;
+  font-size: 9pt;
+}
