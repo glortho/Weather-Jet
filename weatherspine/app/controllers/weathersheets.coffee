@@ -2,6 +2,7 @@ Spine = require('spine')
 WeatherQuery = require('models/weatherquery')
 
 class WeatherSheets extends Spine.Controller
+  @extend(Spine.Events)
   id: 'wejet'
 
   elements:
@@ -13,6 +14,7 @@ class WeatherSheets extends Spine.Controller
   constructor: ->
     super
 
+    @bind 'data-ready', 'show'
     @routes
     	'/q/:query': (params) ->
         @api_query(params)
@@ -22,11 +24,14 @@ class WeatherSheets extends Spine.Controller
   api_query: (params) ->
     @query = params.query
     weather = new WeatherQuery(query: @query)
-    weather.qapi()
+    weather.qapi(@show)
 
   user_query: ->
     query = @search.val()
     @navigate(query)
+
+  show: (data) ->
+    console.log(data)
 
   template: (sheet) ->
   	require('views/weathersheets')
