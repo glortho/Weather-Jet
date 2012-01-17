@@ -2,7 +2,7 @@
   "dependencies": [
     "es5-shimify", 
     "json2ify", 
-    "jqueryify", 
+    "jqueryify",
     "spine",
     "spine/lib/local",
     "spine/lib/ajax",
@@ -10,5 +10,7 @@
     "spine/lib/tmpl",
     "spine/lib/manager"
   ],
-  "libs": []
+  "libs": [
+    "app/lib/highcharts.js"
+  ]
 }
