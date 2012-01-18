@@ -9,7 +9,7 @@ class App extends Spine.Controller
 
     @weathersheets = new WeatherSheets
     @append @weathersheets
-   	Spine.Route.setup(history: true)
+   	Spine.Route.setup()
 
 module.exports = App
     

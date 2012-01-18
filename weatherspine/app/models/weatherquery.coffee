@@ -1,8 +1,6 @@
 Spine = require('spine')
 
 class WeatherQuery extends Spine.Model
-	@extend(Spine.Events)
-
 	@configure 'WeatherQuery', 'query', 'processor'
 
 	defaults: {
@@ -30,7 +28,7 @@ class WeatherQuery extends Spine.Model
 		@query = if @query == 'local' then 'autoip' else @query
 		settings = $.extend({}, @defaults.xhr.options)
 		settings.url = @defaults.xhr.urls.weather.replace('{query}', @query)
-		#$.ajax(settings).done(@cb)
-		$.getJSON('./data.json', @processor)
+		$.ajax(settings).done(@processor)
+		#$.getJSON('./data.json', @processor)
 
 module.exports = WeatherQuery

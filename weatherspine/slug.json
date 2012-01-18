@@ -11,6 +11,7 @@
     "spine/lib/manager"
   ],
   "libs": [
+    "app/lib/jquery.min.js",
     "app/lib/highcharts.js"
   ]
 }

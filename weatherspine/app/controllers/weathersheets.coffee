@@ -28,7 +28,8 @@ class WeatherSheets extends Spine.Controller
 
   user_query: ->
     query = @search.val()
-    @navigate(query)
+    @navigate("/q/#{query}")
+    false
 
   process: (data) =>
     @location = data.location
@@ -38,7 +39,8 @@ class WeatherSheets extends Spine.Controller
 
   render: =>
     @html require('views/weathersheets')(@)
-    new Chart data: @forecast
+    chart = new Chart(data: @forecast)
+    chart.render()
     
   helper:
 
