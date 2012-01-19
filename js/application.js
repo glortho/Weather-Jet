@@ -204,21 +204,23 @@
 		};
 
 		this.fetch = {
-			local: function() {
+			process: function(data) {
 				var set, nugget;
-
-				$.getJSON('./data.json', function(data) {
-					for (var i = _api_sets.length - 1; i >= 0; i--) {
-						set = _api_sets[i];
-						nugget = data[set.ref];
-						docready.then(function() {
-							document.getElementById(set.ref).innerHTML = set.callback.call(self, nugget);
-						});
-					}
-				});
+				
+				for (var i = _api_sets.length - 1; i >= 0; i--) {
+					set = _api_sets[i];
+					nugget = data[set.ref];
+					docready.then(function() {
+						document.getElementById(set.ref).innerHTML = set.callback.call(self, nugget);
+					});
+				}
+			},
+			local: function() {
+				$.getJSON('./data.json', this.process);
 			},
 			remote: function() {
-				var deferred = new $.Deferred(), // for error checking
+				var that = this,
+					deferred = new $.Deferred(), // for error checking
 					options = {
 						url: $.map(_api_sets, function(item) {
 							return item.url;
@@ -236,13 +238,7 @@
 						} else if (!data[_api_sets[0].ref]) {
 							self.error('Please select from the pop-up list.');
 						} else {
-							for (var i = _api_sets.length - 1; i >= 0; i--) {
-								set = _api_sets[i];
-								nugget = data[set.ref];
-								docready.then(function() {
-									document.getElementById(set.ref).innerHTML = set.callback.call(self, nugget);
-								});
-							}
+							that.process(data);
 						}
 					});
 
