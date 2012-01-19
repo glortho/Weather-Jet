@@ -230,7 +230,7 @@
 				self.xhr
 					.send(options)
 					.done(function(data) {
-						var set, nugget, msg;
+						var msg;
 						deferred.resolve();
 						if ( !data || data.response.error ) {
 							msg = data ? data.response.error : 'Unknown error.';
