@@ -178,7 +178,7 @@
 		this.chart = function(data) {
 			var nuggets = data.simpleforecast.forecastday,
 				days = [], highs = [], lows = [],
-				nug, chart;
+				nug, chart, series;
 
 				// nuggets.splice(nuggets.length-1, 1);
 
