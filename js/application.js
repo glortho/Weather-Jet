@@ -1,5 +1,5 @@
 /*
- * Weather Jet weather widget prepared as code sample for Richard Jones of Callisto.fm
+ * Weather Jet weather widget
  *
  * Copyright 2012 Jonathan Verity @ Dataverse Consulting LLC
  *
